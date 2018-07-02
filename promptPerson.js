@@ -10,19 +10,23 @@ var realPerson = {
 
 rl.question("What is the name of a real person? ", function(answer) {
 
-	realPerson.name = answer;
+realPerson.name = answer;
 
-	//
-	//	TODO: Use a Writable Stream
-	//
+var stream = fs.createWriteStream(realPerson.name + ".md");
+stream.write(`${realPerson.name}\n===============\n\n`);
+rl.setPrompt(`What would ${realPerson.name} say? `);
+rl.prompt();
+rl.on('line', function (saying) {
+	if (saying.toLower().trim() === 'exit') {
+		stream.close();
+		rl.close();
+	} else {
+		realPerson.sayings.push(saying,trim());
+		stream.write( `* ${saying.trim()} \n`);
 
-
-		//
-		//TODO: Write to the stream
-		//
-		
-	});
-
+		rl.setPrompt(`What else would ${realPerson.name} say? ('exit' to leave) `);
+		rl.prompt();
+	}
 });
 
 
