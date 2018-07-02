@@ -17,7 +17,7 @@ rl.question("What is the name of a real person? ", function(answer) {
 	rl.setPrompt(`What would ${realPerson.name} say? `);
 	rl.prompt();
 	rl.on('line', function (saying) {
-		if (saying.toLower().trim() === 'exit') {
+		if (saying.toLowerCase().trim() === 'exit') {
 			stream.close();
 			rl.close();
 		} else {
