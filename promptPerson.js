@@ -21,7 +21,7 @@ rl.question("What is the name of a real person? ", function(answer) {
 			stream.close();
 			rl.close();
 		} else {
-			realPerson.sayings.push(saying,trim());
+			realPerson.sayings.push(saying.trim());
 			stream.write( `* ${saying.trim()} \n`);
 
 			rl.setPrompt(`What else would ${realPerson.name} say? ('exit' to leave) `);
